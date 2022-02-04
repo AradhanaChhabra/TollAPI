@@ -60,14 +60,36 @@ hr{
     font-size: 24px;
     font-weight: 600;
 }
-@media screen and (max-width:746px) {
+
+.headerText{
+    font-size: 12px;
+}
+.rightheader{
+    width: 98%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+video{
+    object-fit: contain;
+    max-width: 95%;
+    max-height: 300px;
+}
+@media screen and (max-width:760px) {
     .leftheader{
+        height: 50px;
+    }
+    .rightheader{
         height: 50px;
     }
     .vehicle{
         font-size: 24px;
     }
     .plateHeading{
+        font-size: 10px;
+    }
+    .headerText{
         font-size: 10px;
     }
     .plateNo{
@@ -84,10 +106,16 @@ hr{
     .plateHeading{
         font-size: 8px;
     }
+    .headerText{
+        font-size:4px;
+    }
     .plateNo{
-        font-size: 10px;
+        font-size: 8px;
     }
     .leftheader{
+        height: 30px;
+    }
+    .rightheader{
         height: 30px;
     }
 }
@@ -96,28 +124,21 @@ hr{
         width: 80%;
     }
     .vehicle{
-        font-size: 10px;
-    }
-    .plateHeading{
-        font-size: 6px;
-    }
-    .plateNo{
         font-size: 8px;
     }
+    .plateHeading{
+        font-size: 5px;
+    }
+    .plateNo{
+        font-size: 6px;
+    }
     .leftheader{
+        height: 20px;
+    }
+    .rightheader{
         height: 20px;
     }
     .hrH{
         margin-bottom: 3px;
     }
-}
-.headerText{
-    font-size: 12px;
-}
-.rightheader{
-    width: 98%;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }

@@ -6,12 +6,20 @@ import UnitTollCard from './UnitTollCard';
 const ResponseGrid = () => {
     const baseURL = "https://tolltax.xyz/demoapi/";
     const [data, setData] = useState([]);
+    // to get unique image ids
     var image = 0;
     const getImageID = () => {
         return "image" + (image++);
     }
+    // to get unique video ids
+    var video = 0;
+    const getVideoID = () => {
+        return "video" + (video++);
+    }
+    // to get unique keys for map function
     var key = 0;
     const getKey = () => key++;
+
     const postData= {
             "licence_plate": "",
             "vehicle_type": "",
@@ -25,6 +33,8 @@ const ResponseGrid = () => {
             'content-type': 'application/json'
         }
     }
+
+    // funciton to fetch data array from api 
     const getDataArray = async() => {
         const response = await axios.post(baseURL + "dashboard", postData, headers);
         const dataArray = await response.data.data;
@@ -34,6 +44,7 @@ const ResponseGrid = () => {
             return imageData;
         })
     }
+    // funciton to fetch image file as blob from api and set the source of image elements 
     const getImage = async (filepath) => {
         const response = await axios.post(baseURL+"get_file", {
             "filepath": filepath
@@ -43,43 +54,64 @@ const ResponseGrid = () => {
             headers, 
         );
         const imgData = await response.data;
-        console.log(response);
         const urlCreator = window.URL || window.webkitURL;
         document.getElementById(getImageID()).src = urlCreator.createObjectURL(imgData);
-        const src = urlCreator.createObjectURL(imgData);
+        return urlCreator.createObjectURL(imgData);   
+    }
+
+    // funciton to fetch video file as blob from api and set the source of video elements 
+    const getVideo = async (filepath) => {
+        const response = await axios.post(baseURL+"get_videoclip", {
+            "filepath": filepath
+        },{
+            responseType:'blob'
+        },
+            headers, 
+        );
+        const vidData = await response.data;
+        const urlCreator = window.URL || window.webkitURL;
+        document.getElementById(getVideoID()).src = urlCreator.createObjectURL(vidData);
+        const src = urlCreator.createObjectURL(vidData);
         return src;    
     }
 
+    // receive data array 
     useEffect(() => {
         getDataArray();
     }, []);
+
+    // array of elements mapped from the data received, to be rendered
     const gridItems = data.map((obj, index) => {
-        console.log(obj)
         return (
             <UnitTollCard
                 key={getKey()}
                 jobID={obj.jobid}
-                imageid={"image"+index}
+                imageid={"image" + index}
+                videoid={"video"+index}
                 plate={obj.licence_plate}
                 time={obj.time}
                 type={obj.vehicle_type}
             />);
     })
-    console.log(gridItems);
 
+    // calling functions to set src of images and videos 
     useEffect(() => {
-        console.log(data);
         if (data.length > 0) {
             data.map((obj) => {
                 getImage(obj.image);
                 return 1;
             });
+            data.map((obj) => {
+                getVideo(obj.videoclip);
+                return 0;
+            })
         }   
     }, [data])
     
     return <div className={styles.container}>
         <div className={styles.text}> Displaying fetched data from the API</div>
-        {data.length>0?gridItems:<div> Nothing here</div>}
+        {data.length > 0 ? gridItems : <div> Nothing here</div>}
+
         
   </div>;
 };

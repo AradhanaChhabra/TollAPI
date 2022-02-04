@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './UnitTollCard.module.css';
 
-const UnitTollCard = ({ jobID, plate, time, type, imageid }) => {
+const UnitTollCard = ({ jobID, plate, time, type, imageid, videoid }) => {
+  
+  // capitalize first character of a string
   const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -38,7 +40,10 @@ const UnitTollCard = ({ jobID, plate, time, type, imageid }) => {
         </div>
       </div>
 
-      <hr className={styles.hrH}/>
+      <hr className={styles.hrH} />
+
+      <video id={videoid} type="video/mp4" autoPlay controls loop muted>
+        </video>
     </div>
   </div>);
 };
