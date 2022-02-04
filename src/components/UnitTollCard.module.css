@@ -1,0 +1,123 @@
+.container{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 8px;
+    width: 90%;
+    max-height: 400px;
+    background-color: #fff;
+    align-self: center;
+    margin: 10px;
+}
+img{
+    object-fit: contain;
+    max-width: 95%;
+    max-height: 300px;
+}
+.left{
+    width: calc(50% - 6px);
+    margin:6px;
+    display: flex;
+    flex-direction: column;
+}
+.leftheader{
+    width: 90%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+hr{
+    margin: 0;
+    padding: 0;
+    background-color:rgb(196, 196, 196);
+}
+.hrH{
+    width: 95%;
+    height: 1px;
+    border:none;
+    margin-bottom: 10px;
+}
+.hrV{
+    min-height: min-content;
+    border: none;
+    width: 1px;
+    background-color:rgb(161, 161, 161);
+    margin:10px;
+}
+.vehicle{
+    font-size: 40px;
+    font-weight: 600;
+}
+.licence{
+    display: flex;
+    flex-direction: column;
+}
+.plateHeading{
+    font-size: 18px;
+}
+.plateNo{
+    font-size: 24px;
+    font-weight: 600;
+}
+@media screen and (max-width:746px) {
+    .leftheader{
+        height: 50px;
+    }
+    .vehicle{
+        font-size: 24px;
+    }
+    .plateHeading{
+        font-size: 10px;
+    }
+    .plateNo{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:470px) {
+    .container{
+        width: 80%;
+    }
+    .vehicle{
+        font-size: 16px;
+    }
+    .plateHeading{
+        font-size: 8px;
+    }
+    .plateNo{
+        font-size: 10px;
+    }
+    .leftheader{
+        height: 30px;
+    }
+}
+@media screen and (max-width:370px) {
+    .container{
+        width: 80%;
+    }
+    .vehicle{
+        font-size: 10px;
+    }
+    .plateHeading{
+        font-size: 6px;
+    }
+    .plateNo{
+        font-size: 8px;
+    }
+    .leftheader{
+        height: 20px;
+    }
+    .hrH{
+        margin-bottom: 3px;
+    }
+}
+.headerText{
+    font-size: 12px;
+}
+.rightheader{
+    width: 98%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
